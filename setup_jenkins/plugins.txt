@@ -1,0 +1,11 @@
+git:latest
+workflow-aggregator:latest
+nodejs:latest
+docker-workflow:latest
+junit:latest
+email-ext:latest
+ws-cleanup:latest
+build-timeout:latest
+timestamper:latest
+pipeline-stage-view:latest
+generic-webhook-trigger:latest
