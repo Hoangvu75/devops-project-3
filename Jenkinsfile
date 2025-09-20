@@ -12,21 +12,21 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Cài đặt dependencies với Yarn...'
-                bat 'yarn install'
+                sh 'yarn install'
             }
         }
         
         stage('Test') {
             steps {
                 echo 'Chạy tests...'
-                bat 'yarn test --watchAll=false'
+                sh 'yarn test --watchAll=false'
             }
         }
         
         stage('Build') {
             steps {
                 echo 'Build ứng dụng...'
-                bat 'yarn build'
+                sh 'yarn build'
             }
         }
     }
@@ -34,11 +34,9 @@ pipeline {
     post {
         success {
             echo '✅ Build thành công!'
-            echo '📦 Ứng dụng đã được build và test xong'
         }
         failure {
             echo '❌ Build thất bại!'
-            echo '🔍 Kiểm tra logs để xem lỗi'
         }
     }
 }
