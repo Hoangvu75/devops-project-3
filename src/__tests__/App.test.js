@@ -23,7 +23,7 @@ describe('App Component', () => {
 
   test('renders app header', () => {
     render(<App />);
-    expect(screen.getByText('DevOps Todo App')).toBeInTheDocument();
+    expect(screen.getByText('DevOps Todo Apps')).toBeInTheDocument();
     expect(screen.getByText('Ứng dụng Todo đơn giản để học CI/CD Pipeline')).toBeInTheDocument();
   });
 
