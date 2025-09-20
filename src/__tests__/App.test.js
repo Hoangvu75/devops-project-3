@@ -17,6 +17,8 @@ describe('App Component', () => {
     localStorageMock.getItem.mockReturnValue(null);
     localStorageMock.setItem.mockClear();
     localStorageMock.clear();
+    // Clear any existing DOM
+    document.body.innerHTML = '';
   });
 
   test('renders app header', () => {
@@ -62,7 +64,7 @@ describe('App Component', () => {
   });
 
   test('can delete a todo', () => {
-    const { rerender } = render(<App />);
+    render(<App />);
     
     // Add a todo first
     const input = screen.getByPlaceholderText('Thêm công việc mới...');
@@ -74,7 +76,7 @@ describe('App Component', () => {
 
     // Delete the todo
     const deleteButtons = screen.getAllByText('Xóa');
-    fireEvent.click(deleteButtons[0]);
+    fireEvent.click(deleteButtons[deleteButtons.length - 1]); // Click last delete button
 
     // Check that todo was removed
     expect(screen.queryByText('Delete me')).not.toBeInTheDocument();

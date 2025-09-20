@@ -36,8 +36,8 @@ USER jenkins
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN jenkins-plugin-cli --plugin-file /usr/share/jenkins/ref/plugins.txt
 
-# Copy Jenkins configuration
-COPY jenkins-config/ /usr/share/jenkins/ref/
+# Skip Jenkins configuration for now
+# COPY jenkins-config/ /usr/share/jenkins/ref/
 
 # Expose ports
 EXPOSE 8080 50000
