@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins-server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"      # Jenkins Web UI
+      - "50000:50000"    # Jenkins Agent port
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock  # Để Jenkins có thể dùng Docker
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    user: root  # Cần root để truy cập Docker socket
+    networks:
+      - jenkins-network
+
+volumes:
+  jenkins_home:
+    driver: local
+
+networks:
+  jenkins-network:
+    driver: bridge
